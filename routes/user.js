@@ -26,6 +26,8 @@ const convertToBase64 = (file) => {
 router.post('/signup', async (req, res) => {
     try {
         const { email, username, password, newsletter } = req.body;
+
+        console.log(username)
         if (!username) {
             return res.status(404).json({ message: "Username required" })
         }
@@ -60,8 +62,7 @@ router.post('/signup', async (req, res) => {
 
         res.status(201).json({
             _id: newUser._id,
-            token: newUser.token,
-            account: newUser.account,
+            newUser
         })
     }
     catch (error) {
